@@ -6,7 +6,7 @@ export default function MainLayout({children}){
     return(
         <>
             <Header/>
-            <main className="h-screen container">
+            <main className="h-screen">
                <Outlet/>
             </main>
             <Footer/>
