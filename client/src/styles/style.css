@@ -1,1 +1,29 @@
 @import "tailwindcss";
+@theme {
+  --color-accent-100:#FD6262;
+  --color-primary:#ffffff;
+  --color-bg-primary:#0A0F17;
+  --font-primary:"Roboto", sans-serif;
+}
+
+@layer base{
+  body{
+    background-color: var(--color-bg-primary);
+    color:var(--color-primary);
+    font-family: var(--font-primary);
+    font-size: var(--text-lg);
+  }
+}
+
+@layer utilities{
+  .container{
+    @apply px-2 max-w-7xl mx-auto;
+  }
+  nav a{
+    @apply relative px-1  pb-1 after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[3px] after:bg-accent-100 after:transition-all after:duration-150 hover:after:w-full hover:after:left-0;
+  }
+}
+
+@layer components{
+
+}
