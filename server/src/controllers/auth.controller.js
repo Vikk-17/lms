@@ -1,4 +1,6 @@
-import { createUser,getUserByEmail,comparePassword } from "../services/auth.service.js";
+import { createUser,getUserByEmail } from "../services/db/user.service.js";
+import { comparePassword } from "../services/auth/auth.service.js";
+import { signAccessToken,verifyAccessToken } from "../services/auth/auth.service.js";
 
 export const register = async (req,res)=>{
     try{
@@ -28,7 +30,9 @@ export const login = async (req,res)=>{
         if(!ismatch){
             return res.status(400).json({message:'invalid credentials'});
         }
-        res.status(200).json({message:'login successful'});
+        const token = await signAccessToken({ userId: user._id, name: user.name, email: user.email });
+        res.cookie('token',token,{httpOnly:true, maxAge: 1 * 60 * 1000 });
+        res.status(200).json({message:'login successful',token:token});
     }catch(error){
         res.status(500).json({message:'internal error'});
     }

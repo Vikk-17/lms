@@ -11,3 +11,4 @@ export const validateUser =(schema)=>(req,res,next)=>{
         });
     }
 };
+
