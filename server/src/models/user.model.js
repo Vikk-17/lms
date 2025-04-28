@@ -2,25 +2,25 @@ import {Schema, model} from 'mongoose';
 
 const userSchema = new Schema({
     name:{
-        type:string,
+        type:String,
         required:true,
         trim:true
     },
     email:{
-        type:string,
+        type:String,
         required:true,
         unique:true,
         lowercase:true,
         trim:true
     },
     password:{
-        type:string,
+        type:String,
         required:true
     },
     role:{
-        type:string,
+        type:String,
         enum:['student','trianer','admin'],
-        default:student.Schema,
+        default:'student',
     },
     createdAt:{
         type:Date,
@@ -32,7 +32,7 @@ const userSchema = new Schema({
     },
 });
 
-userSchema.pre('save',function(){
+userSchema.pre('save',function(next){
     this.updatedAt = Date.now();
     next()
 });
