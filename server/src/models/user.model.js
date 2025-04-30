@@ -19,23 +19,35 @@ const userSchema = new Schema({
     },
     role:{
         type:String,
-        enum:['student','trianer','admin'],
+        enum:['student','trainer','admin'],
         default:'student',
+        required:true,
     },
-    createdAt:{
-        type:Date,
-        default:Date.now,
+    profile:{
+        type:String,
+        trim:true,
     },
-    updatedAt:{
-        type:Date,
-        dafault:Date.now,
+    phone:{
+        type:String,
     },
-});
+    address:{
+        street:{type:String,trim:true},
+        city:{type:String,trim:true},
+        state:{type:String,trim:true},
+        pincode:{type:String,trim:true},
+        country:{type:String,trim:true},
+    },
+    bio:{
+        type:String,
+        trim:true,
+    },
+    isActive:{
+        type:Boolean,
+        required:true,
+        default:true,
+    }
+},{timestamps:true});
 
-userSchema.pre('save',function(next){
-    this.updatedAt = Date.now();
-    next()
-});
 
-const User = model('user',userSchema);
+const User = model('User',userSchema);
 export default User;
