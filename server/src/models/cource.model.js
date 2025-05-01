@@ -22,7 +22,6 @@ const courceSchema = new Schema({
     module:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Module',
-        required:true,
     }],
     tag:{
         type:[String],
@@ -39,6 +38,7 @@ const courceSchema = new Schema({
     },
     progress:{
         type:Number,
+        default:0,
     },
 
 },{timestamps:true});

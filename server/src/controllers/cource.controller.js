@@ -4,7 +4,9 @@ export const getAllCources = async (req,res)=>{
 }
 
 export const createCource = async (req,res)=>{
-    res.status(200).json({message:"hello from all cources"})
+    const data = req.body;
+    console.log(data);
+    res.status(200).json({message:"hello from post cources"})
 }
 
 export const getCource = async (req,res)=>{
