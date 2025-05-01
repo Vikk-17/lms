@@ -5,6 +5,7 @@ const courceSchema = new Schema({
         type:String,
         trim:true,
         required:true,
+        unique:true,
     },
     subtitle:{
         type:String,
@@ -15,12 +16,12 @@ const courceSchema = new Schema({
         trim:true,
     },
     instructor:{
-        type:mongoose.Schema.Types.ObjectId,
+        type:Schema.Types.ObjectId,
         ref:'Instructor',
         required:true,
     },
     module:[{
-        type:mongoose.Schema.Types.ObjectId,
+        type:Schema.Types.ObjectId,
         ref:'Module',
     }],
     tag:{
@@ -42,6 +43,23 @@ const courceSchema = new Schema({
     },
 
 },{timestamps:true});
+
+
+
+//delete all related modules and videos after deletion of cource
+courceSchema.pre('findOneAndDelete', async function (next){
+    try{
+        const courceId = this.getQuery()._id;
+        const modules = await model('Module').find({cource:courceId});
+        const modulesIds = modules.map(m=>m._id);
+        await model('Video').deleteMany({module:{$in:modulesIds}});
+        await model('Module').deleteMany({cource:courceId});
+        next();
+    }catch(error){
+        next(error);
+    }
+});
+
 
 const Cource = model('Cource',courceSchema);
 export default Cource;

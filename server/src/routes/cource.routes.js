@@ -17,7 +17,7 @@ router.route('/:courceid')
     .put(updateCource)
     .delete(deleteCource);
 
-router.use('/:courceId/modules',moduleRoutes);
+router.use('/:courceid/modules',moduleRoutes);
 
 export default router;
 
