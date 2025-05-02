@@ -10,7 +10,7 @@ const router = express.Router({mergeParams:true});
 router.route('/')
     .get(getVideosByModule)
     .post(createVideoToModule);
-router.route('/:videoId')
+router.route('/:videoid')
     .get(getVideo)
     .put(updateVideo)
     .delete(deleteVideo);

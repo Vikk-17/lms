@@ -12,9 +12,9 @@ const router = express.Router({mergeParams:true});
 router.route('/')
     .get(getModulesByCource)
     .post(createModule);
-router.route('/:moduleId')
+router.route('/:moduleid')
     .get(getModule)
     .put(updateModule)
     .delete(deleteModule);
-router.use('/:moduleId/videos',videoRoutes);
+router.use('/:moduleid/videos',videoRoutes);
 export default router;
