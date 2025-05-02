@@ -1,7 +1,5 @@
 import Cource from "../../models/cource.model.js";
 
-<<<<<<< HEAD
-=======
 export const findAllCources = async ()=>{
     return await Cource.find();
 };
@@ -17,4 +15,3 @@ export const updateCourceById = async (courceId,updateData)=>{
 export const deleteCourceById = async (courceId)=>{
     return await Cource.findByIdAndDelete(courceId);
 };
->>>>>>> feature/instructor-upload-cources

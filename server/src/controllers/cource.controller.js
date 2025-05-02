@@ -16,12 +16,6 @@ export const getAllCources = async (req,res)=>{
 };
 
 export const createCource = async (req,res)=>{
-<<<<<<< HEAD
-    const data = req.body;
-    console.log(data);
-    res.status(200).json({message:"hello from post cources"})
-}
-=======
     try{
         const courceData = req.body;
         const newCource = await insertIntoCource(courceData);
@@ -30,7 +24,6 @@ export const createCource = async (req,res)=>{
         res.status(500).json({message:"internal error",error});
     }
 };
->>>>>>> feature/instructor-upload-cources
 
 export const getCource = async (req,res)=>{
     try{
