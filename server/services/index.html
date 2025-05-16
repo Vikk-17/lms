@@ -1,0 +1,28 @@
+<html>
+    <video controls width="100%">
+        <!-- HLS.js is needed for browsers that don't natively support HLS -->
+        <source src="https://res.cloudinary.com/dolkfv3wu/video/upload/sp_auto/v1747373696/kacoqongmh7cvocep9gc.m3u8" type="application/x-mpegURL">
+        
+        <!-- Fallback to direct video URL for older browsers -->
+        <source src="https://res.cloudinary.com/dolkfv3wu/video/upload/v1747373696/kacoqongmh7cvocep9gc.mkv" type="video/mkv">
+        
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Include HLS.js for browsers without native HLS support -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+        const video = document.querySelector('video');
+        const videoSrc = 'https://res.cloudinary.com/dolkfv3wu/video/upload/sp_auto/v1747373696/kacoqongmh7cvocep9gc.m3u8';
+        
+        if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+        }
+        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Native HLS support (Safari)
+        video.src = videoSrc;
+        }
+    </script>
+</html>
