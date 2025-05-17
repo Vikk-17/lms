@@ -47,5 +47,5 @@ app.use((err, req, res, next) => {
     });
 });
 app.listen(PORT, () => {
-    console.log("Server is listening in the port 4000");
+    console.log(`Server is listening in the port ${PORT}`);
 });

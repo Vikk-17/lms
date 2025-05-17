@@ -2,7 +2,6 @@ const express = require("express");
 const { uploadMedia, deleteMedia } = require("../../services/cloudinary");
 const router = express.Router();
 const multer = require("multer");
-
 const upload = multer({
     dest: "uploads/"
 });
@@ -48,9 +47,8 @@ router.delete("/delete/:id", async (req, res) => {
 // bulk upload
 router.post("/bulk-upload", upload.array("files", 5), async (req, res) => {
     try{
-        const singlePromises = req.files.map((item) => {
-            uploadMedia(item.path);
-        });
+        const singlePromises = req.files.map(item => uploadMedia(item.path));
+        
 
         const result = await Promise.all(singlePromises);
 
