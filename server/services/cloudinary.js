@@ -1,11 +1,9 @@
 const cloudinary = require("cloudinary").v2;
 const dotenv = require("dotenv");
+const path = require("path")
 dotenv.config({
-    path: "../.env"
+    path: path.resolve(__dirname, '../.env')
 })
-
-
-// console.log(process.env.API_KEY)
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -47,4 +45,4 @@ const deleteMedia = async (publicId) => {
 
 // deleteMedia("kacoqongmh7cvocep9gc");
 
-// module.exports = { uploadMedia, deleteMedia }
+module.exports = { uploadMedia, deleteMedia }

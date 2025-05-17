@@ -2,10 +2,9 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
+
 const mediaRoutes = require("./routes/instructor/media.routes")
 
-
-require("dotenv").config();
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI;
 
@@ -28,16 +27,9 @@ const conncetDB = async () => {
 
 conncetDB()
 
-// app.get("/", (req, res) => {
-//     res.json({
-//         msg: "Hello"
-//     });
-// })
-
 // routes
 app.use("/media", mediaRoutes);
-//
-//
+
 // global error catch
 app.use((err, req, res, next) => {
     console.log(err.stack);

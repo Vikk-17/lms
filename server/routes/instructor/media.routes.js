@@ -2,9 +2,11 @@ const express = require("express");
 const { uploadMedia, deleteMedia } = require("../../services/cloudinary");
 const router = express.Router();
 const multer = require("multer");
+const path = require("path");
 const upload = multer({
     dest: "uploads/"
 });
+
 
 // routes
 // upload
